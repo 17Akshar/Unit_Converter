@@ -88,7 +88,7 @@
   position: relative;
   top: 0;
   backdrop-filter: blur(8px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   transition: 4s ease;
@@ -245,7 +245,7 @@ tr:hover{
     height: 90px;
   }
   .cards{
-    gap: 20px 10px;
+    gap: 10px 75px;
     flex-flow: wrap row;
   }
   .icon{
