@@ -266,7 +266,7 @@ tr:hover{
     font-size: 17px;
   }   
   .right{
-    width: 98%;
+    width: 80%;
     overflow: hidden;
   }
   .table-content{
@@ -277,5 +277,9 @@ tr:hover{
     justify-content: center;
     overflow: auto;
   }
-  
+  .pop-up{
+    background-color: pink;
+    height: 100%;
+    width: 95%;
+  }
 }
