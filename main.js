@@ -20,6 +20,10 @@ function HideModal(){
   document.querySelector('.modal').style.display = "none ";
   var sel = document.getElementById('unit_list')
   sel.innerHTML =  `<option selected>Select the units</options>`
+  var tbody = document.getElementById("table_body")
+  tbody.innerHTML = "" 
+  document.getElementById("in_value").value = " "
+  in_val = ""
 }
 var sub_units = []
 function GetUnits(){
@@ -39,23 +43,37 @@ function GetUnits(){
 
 
 }
+var in_val;
 function ConvertUnit(){
   var tbody = document.getElementById("table_body")
-  var in_val = document.getElementById("in_value").value;
+  in_val = document.getElementById("in_value").value;
   var in_unit = document.getElementById('unit_list').value;
-  var units_short = Qty.getAliases(in_unit) 
-  var qty  = new Qty(in_val+" "+in_unit)
-  var unit_short = units_short[0];
-  let html = ''
-  for(var i=0;i<sub_units.length;i++){
-    var new_unit = Qty.getAliases(sub_units[i])
-    var res = Qty(in_val+" "+unit_short).to(new_unit[0])
-    html += `<tr>
-    <th >${new_unit[0]}</th>
-    <td>${res.scalar.toFixed(5)}</td>
-  </tr>`
-    tbody.innerHTML = html
+
+  if(in_val == ""|| in_val == 0 || in_unit == "0"){
+    alert("Enter the value or Value cannot be null")
   }
+  else{
+    
+    
+      var units_short = Qty.getAliases(in_unit) 
+      var qty  = new Qty(in_val+" "+in_unit)
+      var unit_short = units_short[0];
+      let html = ''
+      for(var i=0;i<sub_units.length;i++){
+        var new_unit = Qty.getAliases(sub_units[i])
+        var res = Qty(in_val+" "+unit_short).to(new_unit[0])
+        html += `<tr>
+        <th>${sub_units[i]}</th>
+        <th >${new_unit[0]}</th>
+        <td>${res.scalar.toFixed(5)}</td>
+        
+      </tr>`
+        tbody.innerHTML = html
+      }
+    
+   
+  }
+  
 
 }
 
