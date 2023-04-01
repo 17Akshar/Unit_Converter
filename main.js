@@ -48,10 +48,10 @@ function ConvertUnit(){
   var tbody = document.getElementById("table_body")
   in_val = document.getElementById("in_value").value;
   var in_unit = document.getElementById('unit_list').value;
-
-  if(in_val == ""|| in_val == 0 || in_unit == "0"){
-    alert("Enter the value or Value cannot be null")
+  if( in_unit == "0"){
+    alert("SELECT THE UNIT")
   }
+  
   else{
     
     
