@@ -170,9 +170,13 @@ justify-content: center;
   font-weight: bold;
   color: #242c34;
 }
+input:focus{
+  border: 2px solid #f96d00;
+}
 input::placeholder{
   opacity: 0.7;
 }
+
 .left .select{
 width: 40%;
 height: 100%;

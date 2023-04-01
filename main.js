@@ -31,7 +31,6 @@ function GetUnits(){
   console.log(search)
   console.log(Qty.getKinds().sort())
   sub_units = Qty.getUnits(search)
-//  console.log( Qty.getUnits('memory'))
 
   var sel = document.getElementById('unit_list')
   for(var i = 0;i<sub_units.length;i++){
@@ -43,36 +42,37 @@ function GetUnits(){
 
 
 }
-var in_val;
+var in_val = 0;
 function ConvertUnit(){
   var tbody = document.getElementById("table_body")
   in_val = document.getElementById("in_value").value;
   var in_unit = document.getElementById('unit_list').value;
-  if( in_unit == "0"){
-    alert("SELECT THE UNIT")
+  if(in_val == "0"||in_val == ""){
+    alert("Enter the value !")
   }
-  
   else{
-    
-    
-      var units_short = Qty.getAliases(in_unit) 
-      var qty  = new Qty(in_val+" "+in_unit)
-      var unit_short = units_short[0];
-      let html = ''
-      for(var i=0;i<sub_units.length;i++){
-        var new_unit = Qty.getAliases(sub_units[i])
-        var res = Qty(in_val+" "+unit_short).to(new_unit[0])
-        html += `<tr>
-        <th>${sub_units[i]}</th>
-        <th >${new_unit[0]}</th>
-        <td>${res.scalar.toFixed(5)}</td>
-        
-      </tr>`
-        tbody.innerHTML = html
-      }
+
+    var units_short = Qty.getAliases(in_unit) 
+    var qty  = new Qty(in_val+" "+in_unit)
+    var unit_short = units_short[0];
+    let html = ''
+    for(var i=0;i<sub_units.length;i++){
+    var new_unit = Qty.getAliases(sub_units[i])
+    var res = Qty(in_val+" "+unit_short).to(new_unit[0])
+    html += 
+    `<tr>
+    <th>${sub_units[i]}</th>
+    <th >${new_unit[0]}</th>
+    <td>${res.scalar.toFixed(5)}</td>
+    </tr>`
+    tbody.innerHTML = html
+  }
+
+  }
+
     
    
-  }
+  
   
 
 }
